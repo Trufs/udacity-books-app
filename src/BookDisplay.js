@@ -15,9 +15,9 @@ class BookDisplay extends Component{
 
               <div>
 
-                <Bookshelf title="Currently Reading" />
-                <Bookshelf title="Want to Read"/>
-                <Bookshelf title="Read"/>
+                <Bookshelf title="Currently Reading" books={this.props.books}/>
+                <Bookshelf title="Want to Read" books={this.props.books}/>
+                <Bookshelf title="Read" books={this.props.books}/>
 
               </div>
 

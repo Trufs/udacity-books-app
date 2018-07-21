@@ -8,7 +8,6 @@ class SearchPage extends Component{
         <div className="search-books">
           <SearchBar />
 
-
           <div className="search-books-results">
             <BookTable />
           </div>
