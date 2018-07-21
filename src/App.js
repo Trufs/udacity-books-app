@@ -1,8 +1,9 @@
 import React from 'react';
-// import * as BooksAPI from './BooksAPI'
-import './App.css';
-import Bookshelf from './Bookshelf';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import * as BooksAPI from './BooksAPI';
+import BookDisplay from './BookDisplay';
 import SearchPage from './SearchPage';
+import './App.css';
 
 
 class BooksApp extends React.Component {
@@ -20,37 +21,12 @@ class BooksApp extends React.Component {
     return (
 
       <div className="app">
-        {this.state.showSearchPage ? ( //if-else statement. here is the if part
 
-          <SearchPage />
+        <Route exact path="/" component={BookDisplay} />
+        <Route path="/search" component={SearchPage} />
 
-        ):(
-          <div className="list-books">
+      </div>
 
-            <div className="list-books-title">
-              <h1>MyReads</h1>
-            </div>
-
-            <div className="list-books-content">
-
-              <div>
-
-                <Bookshelf title="Currently Reading" />
-                <Bookshelf title="Want to Read"/>
-                <Bookshelf title="Read"/>
-
-              </div>
-
-            </div>
-
-
-            <div className="open-search">
-              <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
-            </div>
-
-          </div>
-      )}
-        </div>
     )
   }
 }
