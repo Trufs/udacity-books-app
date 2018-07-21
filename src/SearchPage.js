@@ -6,9 +6,13 @@ class SearchPage extends Component{
 	render() {
     	return (
         <div className="search-books">
-                <SearchBar />
-                <BookTable />
-        </div>
+          <SearchBar />
+
+
+          <div className="search-books-results">
+            <BookTable />
+          </div>
+         </div>
     	)
     }
 }

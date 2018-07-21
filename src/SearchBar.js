@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import BookDisplay from './BookDisplay';
+
 
 class SearchBar extends Component{
 	render() {
     	return (
 
             <div className="search-books-bar">
-              <Link to="/"><div className="close-search"></div></Link>
+              <Link to="/">
+              <div className="close-search"></div>
+              </Link>
+
               <div className="search-books-input-wrapper">
+
                 {/*
                   NOTES: The search from BooksAPI is limited to a particular set of search terms.
                   You can find these search terms here:
