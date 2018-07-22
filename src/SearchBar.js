@@ -3,16 +3,14 @@ import { Link } from "react-router-dom";
 
 
 class SearchBar extends Component{
+	  constructor(props) {
+	    super(props);
+	    this.updateQuery = this.updateQuery.bind(this);
+  }
 
-	state = {
-		query: ''
-	}
-
-	updateQuery = (query) => {
-		this.setState({query: query.trim() });
-		console.log(query);
-	}
-
+  updateQuery(e) {
+    this.props.onupdateQuery(e.target.value);
+  }
 	render() {
     	return (
 
@@ -25,8 +23,8 @@ class SearchBar extends Component{
 
                 <input type="text"
 	                placeholder="Search by title or author"
-            		value = {this.state.query}
-					onChange = {(event) => this.updateQuery(event.target.value)}
+            		value = {this.props.query}
+					onChange = {this.updateQuery}
 					/>
               </div>
             </div>
