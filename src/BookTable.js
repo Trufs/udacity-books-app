@@ -1,35 +1,25 @@
 import React, { Component } from 'react';
-import * as BooksAPI from './BooksAPI';
+import Book from './Book';
+
 
 class BookTable extends Component{
-
-  state = {
-    books: []
-  }
-
-   componentDidMount() {
-    console.log(this.props.query);
-    BooksAPI.search(this.props.query).then((books) => {
-      this.setState({ books })
-    })
-  }
+  constructor(props) {
+    super(props);
+    }
 
   render() {
 
-    // let showingBooks;
-    // if (query) {
-    //    const match = new RegExp(escapeRegExp(query), 'i');
-    //    showingBooks = books.filter((book) => match.test(book.title || book.authors));
-    // } else {
-    //   showingBooks = books;
-    // }
-
-    // showingBooks.sort(sortBy('name'));
-
     	return (
-
-              <ol className="books-grid">
-              </ol>
+        <div>
+        <ol className="books-grid">
+         {this.props.books !== undefined && this.props.books.map ((book) => (
+          <li key={book.id}>
+            <Book book={ book }/>
+          </li>
+          ))
+        }
+        </ol>
+        </div>
     	)
     }
 }

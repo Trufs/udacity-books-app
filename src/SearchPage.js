@@ -12,7 +12,7 @@ class SearchPage extends Component{
     super(props);
     this.state = {
       query: '',
-      books: []
+      books:[]
     }
     this.updateQuery = this.updateQuery.bind(this);
   }
@@ -26,6 +26,8 @@ class SearchPage extends Component{
     console.log(this.state.books);
   }
 
+
+
 	render() {
 
     	return (
@@ -36,7 +38,10 @@ class SearchPage extends Component{
             />
 
           <div className="search-books-results">
-            <BookTable query = {this.state.query} />
+          {this.state.books &&
+            <BookTable books={this.state.books} />
+
+          }
           </div>
          </div>
     	)

@@ -3,13 +3,14 @@ import BookShelfChanger from './BookShelfChanger';
 
 class Book extends Component{
 
+
 	render() {
-    const { title, authors, url } = this.props.book;
+    const { title, authors, imageLinks } = this.props.book;
     	return (
 
     		<div className="book">
               <div className="book-top">
-                <div className="book-cover" style={{ width: 128, height: 193, backgroundImage:`url(${url}` }}>
+                <div className="book-cover" style={{ width: 128, height: 193, backgroundImage:`url(${imageLinks.thumbnail}` }}>
                 </div>
                 <BookShelfChanger />
               </div>
