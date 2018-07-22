@@ -19,10 +19,11 @@ class SearchPage extends Component{
 
   updateQuery = (query) => {
     console.log(query);
-    this.setState({query: query.trim() });
+    this.setState({query: query });
     BooksAPI.search(this.state.query).then((books) => {
       this.setState({ books: books })
     })
+    console.log(this.state.query);
     console.log(this.state.books);
   }
 
@@ -38,7 +39,7 @@ class SearchPage extends Component{
             />
 
           <div className="search-books-results">
-          {this.state.books &&
+          {Array.isArray(this.state.books) &&
             <BookTable books={this.state.books} />
 
           }

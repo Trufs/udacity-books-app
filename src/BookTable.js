@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Book from './Book';
 
 
@@ -7,12 +8,16 @@ class BookTable extends Component{
     super(props);
     }
 
+  static propTypes = {
+    books: PropTypes.array
+  }
+
   render() {
 
     	return (
         <div>
         <ol className="books-grid">
-         {this.props.books !== undefined && this.props.books.map ((book) => (
+         {this.props.books.map ((book) => (
           <li key={book.id}>
             <Book book={ book }/>
           </li>
