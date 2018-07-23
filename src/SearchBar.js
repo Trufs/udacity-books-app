@@ -11,6 +11,7 @@ class SearchBar extends Component{
   updateQuery(e) {
     this.props.onupdateQuery(e.target.value);
   }
+
 	render() {
     	return (
 
@@ -23,8 +24,8 @@ class SearchBar extends Component{
 
                 <input type="text"
 	                placeholder="Search by title or author"
-            		value = {this.props.query}
-					onChange = {this.updateQuery}
+              		value = {this.props.query}
+        					onChange = {this.updateQuery}
 					/>
               </div>
             </div>
