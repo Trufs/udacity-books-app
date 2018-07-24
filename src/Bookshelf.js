@@ -8,8 +8,6 @@ class Bookshelf extends Component{
     let showingBooks;
     if (this.props.books) {
        showingBooks = this.props.books.filter((book) => (book.shelf === this.props.shelf));
-       console.log(this.props.books)
-       console.log(showingBooks);
     }
 
   	return (
@@ -22,7 +20,10 @@ class Bookshelf extends Component{
           {//pass data of each book to Book component
             showingBooks.map ((book) => (
             <li key={book.id}>
-              <Book book={ book }/>
+              <Book book={ book }
+                changed={this.props.changed}
+                handleBookshelfChange={this.props.handleBookshelfChange}
+              />
             </li>
             ))
           }

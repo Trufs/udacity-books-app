@@ -8,28 +8,29 @@ class SearchBar extends Component{
     this.updateQuery = this.updateQuery.bind(this);
   }
 
+  //call the function passed from Search Page when a change of query occurs
   updateQuery(e) {
     this.props.onupdateQuery(e.target.value);
   }
 
 	render() {
-      //display link to home page and the search bar
-    	return (
-        <div className="search-books-bar">
-          <Link to="/">
-            <div className="close-search"></div>
-          </Link>
+    //display link to home page and the search bar
+  	return (
+      <div className="search-books-bar">
+        <Link to="/">
+          <div className="close-search"></div>
+        </Link>
 
-          <div className="search-books-input-wrapper">
-            <input type="text"
-              placeholder="Search by title or author"
-          		value = {this.props.query}
-    					onChange = {this.updateQuery}
-  					/>
-          </div>
+        <div className="search-books-input-wrapper">
+          <input type="text"
+            placeholder="Search by title or author"
+        		value = {this.props.query}
+  					onChange = {this.updateQuery}
+					/>
         </div>
-    	)
-    }
+      </div>
+  	)
+  }
 } //end of component
 
 export default SearchBar;

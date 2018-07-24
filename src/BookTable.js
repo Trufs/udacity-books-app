@@ -19,7 +19,10 @@ class BookTable extends Component{
           {//pass data of each book to Book component
             this.props.books.map ((book) => (
             <li key={book.id}>
-              <Book book={ book }/>
+              <Book book={ book }
+                changed={this.props.changed}
+                handleBookshelfChange={this.props.handleBookshelfChange}
+              />
             </li>
             ))
           }

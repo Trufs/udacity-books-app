@@ -16,9 +16,25 @@ class BookDisplay extends Component{
 
             <div className="list-books-content">
               <div>
-                <Bookshelf title="Currently Reading" shelf="currentlyReading" books={this.props.books}/>
-                <Bookshelf title="Want to Read" shelf="wantToRead" books={this.props.books}/>
-                <Bookshelf title="Read" shelf="read" books={this.props.books}/>
+                <Bookshelf title="Currently Reading"
+	                shelf="currentlyReading"
+	                books={this.props.books}
+                  changed={this.props.changed}
+				          handleBookshelfChange={this.props.handleBookshelfChange}
+				          />
+                <Bookshelf title="Want to Read"
+	                shelf="wantToRead"
+	                books={this.props.books}
+                  changed={this.props.changed}
+				          handleBookshelfChange={this.props.handleBookshelfChange}
+				          />
+                <Bookshelf title="Read"
+	                shelf="read"
+	                books={this.props.books}
+                  changed={this.props.changed}
+				          handleBookshelfChange={this.props.handleBookshelfChange}
+				          />
+
               </div>
             </div>
 

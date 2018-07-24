@@ -16,6 +16,7 @@ class Book extends Component{
     this.setState({value: evt.target.value});
     BooksAPI.update(this.props.book, evt.target.value).then((response) => {
       console.log(response);
+    this.props.handleBookshelfChange();
     })
   }
 
