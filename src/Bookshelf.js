@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import Book from './Book';
-import BookShelfChanger from './BookShelfChanger';
 
 class Bookshelf extends Component{
 
-
 	render() {
-
+    //filter books that belong to this shelf
     let showingBooks;
     if (this.props.books) {
        showingBooks = this.props.books.filter((book) => (book.shelf === this.props.shelf));
@@ -14,26 +12,26 @@ class Bookshelf extends Component{
        console.log(showingBooks);
     }
 
-    // showingBooks.sort(sortBy('name'));
+  	return (
+      <div className="bookshelf">
+        <h2 className="bookshelf-title">{this.props.title}</h2>
 
-    	return (
-        <div className="bookshelf">
-          <h2 className="bookshelf-title">{this.props.title}</h2>
+        <div className="bookshelf-books">
 
-          <div className="bookshelf-books">
+          <ol className="books-grid">
+          {//pass data of each book to Book component
+            showingBooks.map ((book) => (
+            <li key={book.id}>
+              <Book book={ book }/>
+            </li>
+            ))
+          }
+          </ol>
 
-            <ol className="books-grid">
-            {showingBooks.map ((book) => (
-              <li key={book.id}>
-                <Book book={ book }/>
-              </li>
-              ))}
-            </ol>
-
-          </div>
         </div>
-    	)
-    }
-}
+      </div>
+  	)
+  }
+}  //end of component
 
 export default Bookshelf;

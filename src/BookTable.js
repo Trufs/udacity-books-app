@@ -1,32 +1,33 @@
 import React, { Component } from 'react';
+import * as BooksAPI from './BooksAPI';
 import PropTypes from 'prop-types';
 import Book from './Book';
 
 
 class BookTable extends Component{
-  constructor(props) {
-    super(props);
-    }
-
-  static propTypes = {
+  static propTypes = { //make sure prop is of the correct type
     books: PropTypes.array
   }
 
   render() {
 
-    	return (
-        <div>
+    //display books matching the query
+  	return (
+      <div>
+
         <ol className="books-grid">
-         {this.props.books.map ((book) => (
-          <li key={book.id}>
-            <Book book={ book }/>
-          </li>
-          ))
-        }
+          {//pass data of each book to Book component
+            this.props.books.map ((book) => (
+            <li key={book.id}>
+              <Book book={ book }/>
+            </li>
+            ))
+          }
         </ol>
-        </div>
-    	)
-    }
-}
+
+      </div>
+  	)
+  }
+} //end of component
 
 export default BookTable;
