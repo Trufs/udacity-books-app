@@ -16,41 +16,36 @@ class BooksApp extends React.Component {
     this.handleBookshelfChange = this.handleBookshelfChange.bind(this);
   }
 
-  //get books that already are on shelves
+  //get books that already are on shelves on initial render
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
         this.setState({ books: books })
-      }).catch((error) => {console.log('nothing'); console.log(error)})
-    console.log('foo');
-    console.log(this.state.books);
+      })
     }
 
-    componentDidUpdate() {
-      if (this.state.changed === true){
+  //fetch books again whenever a book changes shelf
+  componentDidUpdate() {
+    if (this.state.changed === true){
       BooksAPI.getAll().then((books) => {
         this.setState({ books: books })
-      }).catch((error) => {console.log('nothing'); console.log(error)})
-      console.log('bar');
-      console.log(this.state.books);
+      })
+      //change state back
       this.setState({
-      changed: false
-    });
-    console.log(this.state.changed);
-      }
+        changed: false
+      });
+    }
   }
 
-  //trigger re-render when a book changes shelf
+  //update state when a book changes shelf
   handleBookshelfChange() {
     console.log("I'm moved!");
     this.setState({
       changed: true
     });
-
   }
 
   render() {
-
-    //set routes to pages, pass them books
+    //set routes to pages, pass them books and callbacks to watch shelf change
     return (
       <div className="app">
 
@@ -69,10 +64,9 @@ class BooksApp extends React.Component {
             handleBookshelfChange={this.handleBookshelfChange}
             onSearchPage={() => {
             history.push('/');
-          }}
+            }}
             />
-          )}
-         />
+        )} />
 
       </div>
     )

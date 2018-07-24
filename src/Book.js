@@ -5,13 +5,13 @@ class Book extends Component{
   constructor(props) {
     super(props);
     if(this.props.book.shelf){
-      this.state = {value: this.props.book.shelf};
+      this.state = {value: this.props.book.shelf};  //book is already on a shelf
     } else {
-      this.state = {value: "none"};
+      this.state = {value: "none"};  //book is not added to library yet
     }
   }
 
-  //handle shelf changes
+  //handle shelf changes: update backend, call function passed from parent
   shelfChange = (evt) => {
     this.setState({value: evt.target.value});
     BooksAPI.update(this.props.book, evt.target.value).then((response) => {
@@ -22,19 +22,15 @@ class Book extends Component{
 
 	render() {
     const { id, title, authors, imageLinks } = this.props.book;
-
+    //display the book with correct data
     return (
   		<div className="book">
-
-      {
-        // (imageLinks !== undefined) && (
         <div>
 
           <div className="book-top">
 
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage:`url(${imageLinks.thumbnail}` }}>
             </div>
-
               <div className="book-shelf-changer">
                 <select value={this.state.value} onChange={this.shelfChange}>
                   <option value="move" disabled>Move to...</option>
@@ -44,15 +40,14 @@ class Book extends Component{
                   <option value="none">None</option>
                 </select>
               </div>
+
           </div>
 
           <div className="book-title">{title}</div>
           <div className="book-authors">{authors}</div>
 
         </div>
-      // )
-  }
-        </div>
+      </div>
 
   	)
   }
