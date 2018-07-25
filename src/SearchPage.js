@@ -13,7 +13,7 @@ class SearchPage extends Component{
   //fetch books matching the query
   updateQuery = (query) => {
     this.setState({query: query });
-    BooksAPI.search(this.state.query).then((books) => {
+    BooksAPI.search(query).then((books) => {
       this.setState({ books: books });
     })
   }
