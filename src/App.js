@@ -28,7 +28,7 @@ class BooksApp extends React.Component {
     if (this.state.changed === true){
       BooksAPI.getAll().then((books) => {
         this.setState({ books: books })
-      })
+      });
       //change state back
       this.setState({
         changed: false
